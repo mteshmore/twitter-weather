@@ -3,3 +3,7 @@
 # For weather: line graph of temperature (scale so it will sit on same graph as tweets)
 # If both are checked, render them on top of one another
 # Add correlation
+
+library(plotly)
+library(ggplot2)
+library(dplyr)
