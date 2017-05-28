@@ -8,16 +8,26 @@ library(plotly)
 library(ggplot2)
 library(dplyr)
 
-build.line.chart <- function(data, x.var, y.var, x.label, y.label, title){
+BuildLinePlot <- function(data, x.var, y.var, x.label, y.label, title, color.var){
   p <- plot_ly(data = data,
-               x = x.var,
-               y = y.var,
-               marker = list(size = 10,
-                             color = 'rgba(255, 182, 193, .9)',
-                             line = list(color = 'rgba(152, 0, 0, .8)',
-                                         width = 2))) %>%
+               x = data[[x.var]],
+               y = data[[y.var]],
+               type = "scatter",
+               marker = list(size = 20,
+                             color = data[[color.var]],
+                             line = list(color = 'rgba(0, 0, 0, .8)',
+                                         width = 2),
+                             opacity = 0.7)) %>%
     layout(title = title,
-           yaxis = list(zeroline = FALSE),
-           xaxis = list(zeroline = FALSE)) #change axis titles
+           yaxis = list(title = x.label),
+           xaxis = list(title = y.label))
   return(p)
 }
+
+BuildLinePlot(mtcars,
+             x.var = "mpg",
+             y.var = "cyl",
+             x.label = "Mileage",
+             y.label = "Cycles",
+             title = "Car Data",
+             color.var = "cyl")

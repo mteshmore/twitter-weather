@@ -8,15 +8,31 @@ library(plotly)
 library(ggplot2)
 library(dplyr)
 
-build.bar.chart <- function(data, x.var, y.var, x.label, y.label, title) {
+BuildBarPlot <- function(data, x.var, y.var, x.label, y.label, title, color.var) {
   p <- plot_ly(data = data,
-    x = x.var,
-    y = y.var,
-    name = title,
-    type = "bar"
-  )
+    x = data[[x.var]],
+    y = data[[y.var]],
+    type = "bar",
+    color = data[[color.var]]
+  ) %>%
+    layout(
+      title = title,
+      xaxis = list(title = x.label),
+      yaxis = list(title = y.label)
+    )
+  p <- hide_colorbar(p)
     # layout(
     #   yaxis = list(range = c(0, 100))
     # )
   return(p)
 }
+
+View(mtcars)
+
+BuildBarPlot(data = mtcars,
+             x.var = "cyl",
+             y.var = "mpg",
+             x.label = "cycles",
+             y.label = "mileage",
+             title = "Cars Data",
+             color.var = "cyl")
