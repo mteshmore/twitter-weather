@@ -18,7 +18,8 @@ BuildBarPlot <- function(data, x.var, y.var, x.label, y.label, title, color.var)
     layout(
       title = title,
       xaxis = list(title = x.label),
-      yaxis = list(title = y.label)
+      yaxis = list(title = y.label),
+      barmode = "group"
     )
   p <- hide_colorbar(p)
     # layout(
@@ -28,11 +29,3 @@ BuildBarPlot <- function(data, x.var, y.var, x.label, y.label, title, color.var)
 }
 
 View(mtcars)
-
-BuildBarPlot(data = mtcars,
-             x.var = "cyl",
-             y.var = "mpg",
-             x.label = "cycles",
-             y.label = "mileage",
-             title = "Cars Data",
-             color.var = "cyl")
