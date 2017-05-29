@@ -23,11 +23,3 @@ BuildLinePlot <- function(data, x.var, y.var, x.label, y.label, title, color.var
            xaxis = list(title = y.label))
   return(p)
 }
-
-BuildLinePlot(mtcars,
-             x.var = "mpg",
-             y.var = "cyl",
-             x.label = "Mileage",
-             y.label = "Cycles",
-             title = "Car Data",
-             color.var = "cyl")

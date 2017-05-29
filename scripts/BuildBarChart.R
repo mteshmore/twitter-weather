@@ -27,5 +27,3 @@ BuildBarPlot <- function(data, x.var, y.var, x.label, y.label, title, color.var)
     # )
   return(p)
 }
-
-View(mtcars)
